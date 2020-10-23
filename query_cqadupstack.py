@@ -21,7 +21,10 @@ import pydoc, math
 import zipfile, random, datetime
 import itertools
 from operator import truediv
-from scipy.misc import comb
+try:  # SciPy >= 0.19
+    from scipy.special import comb
+except ImportError:
+    from scipy.misc import comb
 from random import randrange
 from html.parser import HTMLParser
 
