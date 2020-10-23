@@ -913,7 +913,7 @@ class Subforum():
         # restore codeblocks
         newlist = zip(reversed(range(len(codes))), reversed(codes)) # reverse list to hhhh1 does not match hhhh10 (Source: http://galvanist.com/post/53478841501/python-reverse-enumerate)
         for i, c in newlist:
-            s = re.sub('hhhh' + str(i), c.encode('unicode-escape'), s) # Escaping here leads to backslashes being added in the code blocks.
+            s = re.sub('hhhh' + str(i), str(c.encode('unicode-escape')), s) # Escaping here leads to backslashes being added in the code blocks.
         return s
 
 
