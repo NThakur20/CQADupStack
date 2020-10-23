@@ -898,7 +898,7 @@ class Subforum():
             s = re.sub(r'([0-9])DDD([0-9])', r'\1:\2', s)
 
         # restore URLs
-        newurllist = zip(reversed(xrange(len(newurls))), reversed(newurls)) # reverse list to GGGG1 does not match GGG10. (Source: http://galvanist.com/post/53478841501/python-reverse-enumerate)
+        newurllist = zip(reversed(range(len(newurls))), reversed(newurls)) # reverse list to GGGG1 does not match GGG10. (Source: http://galvanist.com/post/53478841501/python-reverse-enumerate)
         for i, u in newurllist:
             s = re.sub('GGGG' + str(i), u, s) # Escaping u here leads to backslashes in URLs.
 
@@ -911,7 +911,7 @@ class Subforum():
         s = re.sub(r"\s$", "", s)
 
         # restore codeblocks
-        newlist = zip(reversed(xrange(len(codes))), reversed(codes)) # reverse list to hhhh1 does not match hhhh10 (Source: http://galvanist.com/post/53478841501/python-reverse-enumerate)
+        newlist = zip(reversed(range(len(codes))), reversed(codes)) # reverse list to hhhh1 does not match hhhh10 (Source: http://galvanist.com/post/53478841501/python-reverse-enumerate)
         for i, c in newlist:
             s = re.sub('hhhh' + str(i), c.encode('unicode-escape'), s) # Escaping here leads to backslashes being added in the code blocks.
         return s
